@@ -13,30 +13,28 @@
 	       </ul>
 	    </footer>
 	 </div> <!--End of content-->
-      </div> <!-- End of container -->
+	</div> <!-- End of container -->
 
 	<script type="text/javascript">
 		$(function(){
 			$('#alphabet a')
-				.click(function(event) {
-					event.preventDefault();
-					var linkId = $(this).attr("id");
-					$.getJSON(
-				'imgload.php',
-				{ letter: linkId }, 
-				function(data) { 
+			.click(function(event) {
+				event.preventDefault();
+				var linkId = $(this).attr("id");
+				$.getJSON( 'imgload.php', { letter: linkId }, 
+					function(data) {
 
-					$('#innerContent').empty();
-					jQuery.each(data, function(i) {
-						var imgResult = '<img src="userimages/' + data[i]['filename'] + '.png"/>';
-						var imgTag = '<h3>' + data[i]['target'] + ' as defined by ' + data[i]['first_name'] + '</h3>';
-						$('#innerContent')
+					$('#innerContent').html('<h2 class="huge">' + data[0]['letter'] + '</h2>');
+						jQuery.each(data, function(i) {
+							var imgResult = '<img src="userimages/' + data[i]['filename'] + '.png"/>';
+							var imgTag = '<h3><span class="target">' + data[i]['target'] + '</span> as defined by ' + data[i]['first_name'] + '</h3>';
+							$('#innerContent')
 							.append(imgResult, imgTag);
-					});
-					jQuery.each(data, function(i) {
-						$('#innerContent img')
+						});
+						jQuery.each(data, function(i) {
+							$('#innerContent img')
 							.wrap('<a href="draw.php?target=' + data[i]['target'] + '"/>');
-							});
+					});
 				});
 			});
 		});

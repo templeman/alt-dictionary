@@ -73,7 +73,7 @@ if (isset($_POST['submitted'])) { // Handle the form.
 			
 				// Send the email.
 				$body = "Thank you for your interest in The Alternative Dictionary! To get started, please click on this link:\n\n";
-				$body .= "http://www.altdictionary.samueltempleman.com/activate.php?x=" . mysqli_insert_id($dbc) . "&y=$a";
+				$body .= "http://www.altdictionary.samueltempleman.com/wdim387/altdictionary/activate.php?x=" . mysqli_insert_id($dbc) . "&y=$a";
 				mail($_POST['email'], 'Registration Confirmation', $body, 'From: welcome_gnome@altdictionary.com');
 				
 				// Finish the page.
@@ -88,7 +88,7 @@ if (isset($_POST['submitted'])) { // Handle the form.
 			}		
 			
 		} else { // The email address is not available.
-			echo '<p class="error">That email address has already been registered. If you have forgotten your password, use the link below to have your password sent to you.</p>'; 
+			echo '<p class="error">That email address has already been registered. If you have forgotten your password, use the link above to have your password sent to you.</p>'; 
 		}
 		
 	} else { // If one of the data tests failed.
