@@ -112,9 +112,9 @@
 		if(context) {
 	 var myImage = context.canvas.toDataURL("image/png");  // Get the data as an image.
 		}
-		var targetInput = $("input:first").val();
-		var myTarget = $.trim(targetInput).toLowerCase();
-
+			var targetInput = $("input:first").val();
+			var myTarget = $.trim(targetInput).toLowerCase();
+		
 		// Save image data to file and store on server
 	 	$.post(
 			'imgsave.php',

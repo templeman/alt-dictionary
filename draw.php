@@ -37,6 +37,7 @@
 
 	if(isset($_GET['target'])) {
 		$z = ($_GET['target']);
+		/* echo 'var target = '.$z.';'; */
 		echo'<h2>Defining: '.$z.'</h2><p>or <a href="dashboard.php">Go Back</a></p>';
 	} else {
 		$z = FALSE;
