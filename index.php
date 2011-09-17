@@ -18,9 +18,9 @@
 		<li>whatever you want it to be</li>
 	</ul>
 	<div id="buttons">
-		<a class="button" href="login.php">Log In</a>
+		<a class="big button" href="login.php">Log In</a>
 		or
-		<a class="button" href="register.php">Sign Up</a>
+		<a class="big button" href="register.php">Sign Up</a>
 	</div>
 
 <?php
