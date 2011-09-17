@@ -1,0 +1,48 @@
+	    </div> <!-- End of innerContent -->
+
+	    <footer>
+	       <ul class="clearfix">
+		  
+		  <?php #footer.html
+		     // This page completes the HTML template.
+		  ?>
+	       </ul>
+	    </footer>
+	 </div> <!--End of content-->
+      </div> <!-- End of container -->
+
+	<script type="text/javascript">
+		$(function(){
+			$('#alphabet a')
+				.click(function(event) {
+					event.preventDefault();
+					var linkId = $(this).attr("id");
+					$.getJSON(
+				'imgload.php',
+				{ letter: linkId }, 
+				function(data) { 
+
+					$('#innerContent').empty();
+					jQuery.each(data, function(i) {
+						var imgResult = '<img src="userimages/' + data[i]['filename'] + '.png"/>';
+						var imgTag = '<h3>' + data[i]['target'] + '</h3>';
+						$('#innerContent')
+							.append(imgResult, imgTag);
+					});
+					jQuery.each(data, function(i) {
+						$('#innerContent img')
+							.wrap('<a href="draw.php?target=' + data[i]['target'] + '"/>');
+							});
+				});
+		});
+		});
+						// .append('<a href="draw.php?target=' + data[i]['target'] + '"/><img src="userimages/' + data[i]['filename'] + '.png"/>')
+							 // .wrap('<a href="draw.php?target=' + data[i]['target'] + '"/>')
+							// .append('<h3>' + data[i]['target'] + '</h3>');
+
+	</script>
+   </body>
+</html>
+<?php // Flush the buffered output.
+ob_flush();
+?>

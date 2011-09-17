@@ -1,0 +1,114 @@
+<?php # header.html
+// This page begins the HTML header for the site.
+
+// Start output buffering.
+ob_start();
+// Initialize a session.
+session_start();
+
+// Check for a $page_title value.
+if (!isset($page_title)) {
+	$page_title = 'The Alternative Dictionary';
+}
+?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<title><?php echo $page_title; ?></title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/css3buttons.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="includes/formalize.css" />
+	<link type="text/css" href="./css/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="./css/global.css" title="default">
+
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript" src="scripts/jquery.formalize.min.js"></script>
+	<script type="text/javascript" src="scripts/drawapp.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./scripts/jquery-ui-1.8.13.custom.min.js"></script>
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>-->
+
+</head>
+<body>
+	<div id="container">
+
+		<div id="content"><!-- End of Header -->
+			<h1><a href="index.php">The Alternative Dictionary</a></h1>
+			<nav>
+				<ul class="clearfix">			
+
+					<?php
+
+						// Conditional Links
+
+						// Show ADMIN link
+						if (isset($_SESSION['user_id']) && (isset($_SESSION['admin']))) {
+							if ($_SESSION['admin'] == 1) {
+								echo '<li><a href="admin.php">Admin</a></li>';
+							}
+						}	  
+
+						// Show LOGGED IN links
+						if (isset($_SESSION['user_id'])) {
+							if (substr($_SERVER['PHP_SELF'], -8) != 'draw.php') {
+								echo '<li><a href="draw.php">Contribute</a></li>'; 
+							}
+							if (substr($_SERVER['PHP_SELF'], -13) != 'dashboard.php') {
+								echo '<li><a href="dashboard.php">Dashboard</a></li>'; 
+							}
+							if (substr($_SERVER['PHP_SELF'], -10) != 'logout.php') {
+								echo '<li><a href="logout.php">Logout</a></li>';
+							}
+							if (substr($_SERVER['PHP_SELF'], -19) != 'change_password.php') {
+								echo '<li><a href="change_password.php">Change Password</a></li>'; 
+							}
+
+						// Show LOGGED OUT links
+						} else {
+							if (substr($_SERVER['PHP_SELF'], -12) != 'register.php') {
+								echo '<li><a href="register.php">Register</a></li>';
+							}
+							if (substr($_SERVER['PHP_SELF'], -9) != 'login.php') {
+								echo '<li><a href="login.php">Login</a></li>';
+							}
+							if (substr($_SERVER['PHP_SELF'], -19) != 'forgot_password.php') {
+								echo '<li><a href="forgot_password.php">Forgot Password</a></li>';
+							}
+						}
+					?>
+				</ul>
+			</nav>
+			<ul id="alphabet">
+				<li>
+					<a id="a" href="#" class="button">a</a>
+					<a id="b" href="#" class="button">b</a>
+					<a id="c" href="#" class="button">c</a>
+					<a id="d" href="#" class="button">d</a>
+					<a id="e" href="#" class="button">e</a>
+					<a id="f" href="#" class="button">f</a>
+					<a id="g" href="#" class="button">g</a>
+					<a id="h" href="#" class="button">h</a>
+					<a id="i" href="#" class="button">i</a>
+					<a id="j" href="#" class="button">j</a>
+					<a id="k" href="#" class="button">k</a>
+					<a id="l" href="#" class="button">l</a>
+					<a id="m" href="#" class="button">m</a>
+					<a id="n" href="#" class="button">n</a>
+					<a id="o" href="#" class="button">o</a>
+					<a id="p" href="#" class="button">p</a>
+					<a id="q" href="#" class="button">q</a>
+					<a id="r" href="#" class="button">r</a>
+					<a id="s" href="#" class="button">s</a>
+					<a id="t" href="#" class="button">t</a>
+					<a id="u" href="#" class="button">u</a>
+					<a id="v" href="#" class="button">v</a>
+					<a id="w" href="#" class="button">w</a>
+					<a id="x" href="#" class="button">x</a>
+					<a id="y" href="#" class="button">y</a>
+					<a id="z" href="#" class="button">z</a>
+				</li>
+			</ul>
+			<div id="innerContent">
+				<div id="alertBox"></div>
