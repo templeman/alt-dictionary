@@ -37,13 +37,13 @@
 
 	if(isset($_GET['target'])) {
 		$z = ($_GET['target']);
-		echo'<h2>Defining: '.$z.'</h2>';
+		echo'<h2>Defining: '.$z.'</h2><p>or <a href="dashboard.php">Go Back</a></p>';
 	} else {
 		$z = FALSE;
+		echo'<input id="target" name="target" type="text" placeholder="what you\'re defining" />';
 	}
 ?>
 
-		<input id="target" name="target" type="text" placeholder="what you're defining" />
 	 <canvas id="stage" width="600" height="400">This browser doesn't support canvas.</canvas>
 	 <div id="buttons" class="clearfix">
 	    <label for="lineColor">Line Color #</label>

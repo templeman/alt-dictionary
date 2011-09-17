@@ -3,9 +3,13 @@
 	    <footer>
 	       <ul class="clearfix">
 		  
-		  <?php #footer.html
-		     // This page completes the HTML template.
-		  ?>
+				<?php #footer.html
+					// This page completes the HTML template.
+					if (substr($_SERVER['PHP_SELF'], -13) == 'dashboard.php') {
+						echo '<li><a href="#container">jump to top</a></li>';
+					}
+				?>
+
 	       </ul>
 	    </footer>
 	 </div> <!--End of content-->
@@ -25,7 +29,7 @@
 					$('#innerContent').empty();
 					jQuery.each(data, function(i) {
 						var imgResult = '<img src="userimages/' + data[i]['filename'] + '.png"/>';
-						var imgTag = '<h3>' + data[i]['target'] + '</h3>';
+						var imgTag = '<h3>' + data[i]['target'] + ' as defined by ' + data[i]['first_name'] + '</h3>';
 						$('#innerContent')
 							.append(imgResult, imgTag);
 					});
@@ -34,11 +38,8 @@
 							.wrap('<a href="draw.php?target=' + data[i]['target'] + '"/>');
 							});
 				});
+			});
 		});
-		});
-						// .append('<a href="draw.php?target=' + data[i]['target'] + '"/><img src="userimages/' + data[i]['filename'] + '.png"/>')
-							 // .wrap('<a href="draw.php?target=' + data[i]['target'] + '"/>')
-							// .append('<h3>' + data[i]['target'] + '</h3>');
 
 	</script>
    </body>

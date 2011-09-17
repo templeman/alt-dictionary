@@ -39,7 +39,7 @@
 
 	echo '<h2>'.$name.'\'s Definitions</h2>';
 
-	$query = "SELECT filename, target FROM images WHERE user_id = $x";
+	$query = "SELECT filename, target FROM images WHERE user_id = $x ORDER BY target";
 	$result = mysqli_query($dbc, $query);
 	if (mysqli_num_rows($result) > 0) { // User has some images
 		while ($row = mysqli_fetch_array ($result, MYSQL_ASSOC)) {
