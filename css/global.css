@@ -209,4 +209,18 @@ small {
 	padding-left: 20px;
 	width: 180px;
 }
-	
+
+figure { 
+	float: left;
+	margin: 0 20px 20px 0;
+	}
+
+figcaption {
+	padding: 5px 0;
+	}
+
+footer {
+	clear: left;
+	}
+
+div#thumbnails > *:nth-child(3n+3) { margin: 0 0 20px 0; }

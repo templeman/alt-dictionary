@@ -1,12 +1,12 @@
  $(function() {
 	 var stage = document.getElementById("stage");
 
-	 // Get the Canvas context
+	 // get the canvas context
 	 var context = stage.getContext('2d');
 
 	 function drawBg() {
 		 context.beginPath();
-		 context.rect(0, 0, 600, 400);
+		 context.rect(0, 0, 600, 600);
 		 context.closePath();
 		 context.fillStyle = "#ffffff";
 		 context.fill();
@@ -102,7 +102,7 @@
 		 clickColor = new Array();
 		 paint = false;
 		 context.beginPath();
-		 context.clearRect ( 0 , 0 , 600, 400);
+		 context.clearRect ( 0 , 0 , 600, 600);
 
 		 // Replace bg
 		 drawBg();
@@ -119,7 +119,8 @@
 	 	$.post(
 			'imgsave.php',
 			{ img: myImage, target: myTarget },
-			function() {
+			function(response) {
+				console.log(response);
 				// build dynamic DOM alert 
 				$('#alertBox').text('Image Saved');
 				$('#alertBox').slideDown("fast").delay(3000).slideUp("slow");

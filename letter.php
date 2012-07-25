@@ -1,38 +1,36 @@
-<?php #letter.php 
-// Letter page dynamically presents all words for a particular letter at the letter level.
+<?php 
 
-   // Include the configuration file for error management and such.
-   require_once ('./includes/config.inc.php'); 
+	### letter.php 
+	### Dynamically presents all words for a particular letter at the letter level
 
-   // Set the page title and include the HTML header.
-   $page_title = 'Some Letter | The Alternative Dictionary';
+	// setup file
+	require_once ('./includes/config.inc.php'); 
+	$page_title = 'Some Letter | The Alternative Dictionary';
 	include ('./includes/header.html');
 
-   // Get letter, $_GET['l'], accessed from URL.
-   if (isset($_GET['l'])) { 
-      $l = (int) $_GET['l'];
-     // $_SESSION['letter_id'] = $l;
+	// get letter, $_GET['l'], accessed from URL
+	if (isset($_GET['l'])) { 
+		$l = (int) $_GET['l'];
+		// $_SESSION['letter_id'] = $l;
+	} else { // incorrect access - redirect user to login.php
 
-   } else { // The page has been accessed incorrectly. Redirect user to login.php.
+		// start defining URL redirect
+		$url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+		// check for trailing slash
+		if ((substr($url, -1) == '/') OR (substr($url, -1) == '\\') ) {
+			$url = substr ($url, 0, -1); // chop off slash
+		}
 
-      // Start defining the URL.
-      $url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
-      // Check for a trailing slash.
-      if ((substr($url, -1) == '/') OR (substr($url, -1) == '\\') ) {
-	 $url = substr ($url, 0, -1); // Chop off the slash.
-      }
-      // Add the page.
-      $url .= '/login.php';
+		// add page
+		$url .= '/login.php';
 
-      ob_end_clean(); // Delete the buffer.
-      header("Location: $url");
+		ob_end_clean(); // delete buffer
+		header("Location: $url");
 
-      exit();
-   } // End of main IS-LETTER conditional
-
-?>
+		exit();
+	} // end of main IS-LETTER conditional
 
 
-<?php
-   include ('./includes/footer.html');
+
+include ('./includes/footer.html');
 ?>
